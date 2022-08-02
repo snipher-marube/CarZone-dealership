@@ -2,8 +2,6 @@
 {% load static %}
 {% block title %} | Register {% endblock %}
 {% block content %}
-{% load socialaccount %}
-{% providers_media_js %}
 
 <!--sub banner start-->
 <div class="sub-banner overview-bgi">
@@ -66,7 +64,7 @@
                         <div class="clearfix"></div>
                         <ul class="social-list">
                             <li><a href="{% url 'social:begin' 'github' %}" class="facebook-bg"><i class="fa fa-github github-i"></i><span>Github</span></a></li>
-                            <li><a <a href="{% url "social:begin" "google-oauth2" %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
+                            <li><a href="{% url "social:begin" "google-oauth2" %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                         </ul>
                     </form>
                     <p>Already have an account? <a href="{% url 'login' %}" class="thembo"> Login </a></p>
