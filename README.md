@@ -31,13 +31,13 @@ virtualenv envname
 
 --> Activate the virtual environment for windows users :
 ```bash
-envname\scripts\activate
+envname/scripts/activate
 
 ```
 
 --> Activate the virtual environment for Linux users :
 ```bash
-envname\bin\activate
+envname/bin/activate
 
 ```
 
