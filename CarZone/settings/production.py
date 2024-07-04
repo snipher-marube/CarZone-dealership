@@ -9,21 +9,13 @@ DEBUG = False
 ALLOWED_HOSTS = ['.vercel.app']
 
 # Configure your production database (example using PostgreSQL)
-'''DATABASES = {
+DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL'),
+        default=config('SUPABASE_DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True
     )
-}'''
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
 }
-
 
 # This configuration block is setting up a cache using Redis for the Django project in a production environment.
 # The cache is used to store the results of expensive database queries, API calls, or other computationally expensive operations.
