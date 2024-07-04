@@ -15,6 +15,11 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+        
+    # Generate SECRET_KEY if not already present
+    import subprocess
+    subprocess.run([sys.executable, 'generate_secret_key.py'])
+    
     execute_from_command_line(sys.argv)
 
 
