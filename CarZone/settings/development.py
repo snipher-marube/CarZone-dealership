@@ -4,7 +4,10 @@ from .base import *
 DEBUG = True
 
 # Add 'localhost' to ALLOWED_HOSTS for development
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '.vercel.app']
+DOMAIN = "http://localhost:8000"
+SECURE_SSL_REDIRECT = False
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 # Use SQLite for development
 DATABASES = {
