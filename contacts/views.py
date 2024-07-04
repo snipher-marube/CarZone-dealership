@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Contact
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from decouple import config
 
 
 def inquiry(request):
@@ -43,7 +44,7 @@ def inquiry(request):
             'New Car Inquiry',
             'You have a new car enquiry for '+car_title+'. Please login for more info.',
             'from@example.com',
-            [admin_email, 'sniphermarube@gmail.com'],
+            [admin_email, config('EMAIL_HOST_USER')],
             fail_silently=False,
         )
         contact.save()
