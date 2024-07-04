@@ -1,68 +1,77 @@
-# CarZone-dealership
-<div align="center">
-<img width="30%" src="https://github.com/snipher-marube/CarZone-dealership/blob/master/static/images/img/logos/logo-black-white.png">
-
 # CarZone Dealership
-</div>
 
-### Cloning the repository
+Welcome to CarZone Dealership! This is a Django-based web application that allows users to search for cars and view car listings.
 
---> Clone the repository using the command below :
-```bash
-https://github.com/snipher-marube/CarZone-dealership.git
+## Features
 
-```
+- User authentication using Django Allauth
+- Search functionality to find cars based on various criteria
+- Car listing pages to display detailed information about each car
 
---> Move into the directory where we have the project files : 
-```bash
-cd CarZone
+## Installation
 
-```
+1. Clone the repository:
 
---> Create a virtual environment :
-```bash
-# Let's install virtualenv first
-pip install virtualenv
+    ```bash
+    https://github.com/snipher-marube/CarZone-dealership.git
+    ```
 
-# Then we create our virtual environment
-virtualenv envname
+2. Navigate to the project directory:
 
-```
+    ```bash
+    cd CarZone-dealership
+    ```
 
---> Activate the virtual environment for windows users :
-```bash
-envname\scripts\activate
+3. Create a virtual environment:
 
-```
+    ```bash
+    python -m venv venv
+    ```
 
---> Activate the virtual environment for Linux users :
-```bash
-envname\bin\activate
+4. Activate the virtual environment:
 
-```
+    - For Windows:
 
---> Install the requirements :
-```bash
-pip install -r requirements.txt
+      ```bash
+      venv\Scripts\activate
+      ```
 
-```
+    - For macOS/Linux:
 
-#
+      ```bash
+      source venv/bin/activate
+      ```
 
-### Running the App
+5. Install the project dependencies:
 
---> To run the App, we use :
-```bash
-python manage.py runserver
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-```
+6. Apply database migrations:
 
-> ⚠ Then, the development server will be started at http://127.0.0.1:8000/
+    ```bash
+    python manage.py migrate
+    ```
 
-#
+7. Start the development server:
 
-### App Preview :
+    ```bash
+    python manage.py runserver
+    ```
 
+8. Open your web browser and visit `http://localhost:8000` to access the CarZone Dealership application.
 
+## Usage
 
+- Register a new user account or log in with an existing account.
+- Use the search functionality to find cars based on make, model, year, etc.
+- View detailed information about each car on the car listing pages.
 
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
