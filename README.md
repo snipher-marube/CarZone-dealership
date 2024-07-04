@@ -2,6 +2,7 @@
 
 Welcome to CarZone Dealership! This is a Django-based web application that allows users to search for cars and view car listings.
 
+
 ## Features
 
 - User authentication using Django Allauth
@@ -61,6 +62,24 @@ Welcome to CarZone Dealership! This is a Django-based web application that allow
     ```
 
 8. Open your web browser and visit `http://localhost:8000` to access the CarZone Dealership application.
+
+## Setting the DJANGO_SETTINGS_MODULE
+
+Make sure you set the `DJANGO_SETTINGS_MODULE` environment variable when running the server. You can do this in your command line or within your deployment configuration.
+
+For Development
+
+```bash
+export DJANGO_SETTINGS_MODULE=CarZone.settings.development
+python manage.py runserver
+```
+
+For Production
+
+```bash
+export DJANGO_SETTINGS_MODULE=CarZone.settings.production
+# your production server start command
+```
 
 ## Usage
 
