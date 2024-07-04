@@ -42,3 +42,5 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_HSTS_PRELOAD = True
+
+DOMAIN = "https://car-zone-dealership.vercel.app"
