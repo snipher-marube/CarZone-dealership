@@ -3,7 +3,7 @@ from decouple import config, Csv
 import dj_database_url
 
 # Production-specific settings
-DEBUG = False
+DEBUG = True
 
 # Add your production domain to ALLOWED_HOSTS
 ALLOWED_HOSTS = ['.vercel.app']
