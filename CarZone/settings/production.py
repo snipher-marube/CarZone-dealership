@@ -11,7 +11,7 @@ ALLOWED_HOSTS = ['.vercel.app']
 # Configure your production database (example using PostgreSQL)
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('POSTGRES_URL'),
+        default=config('SUPABASE_DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True
     )
