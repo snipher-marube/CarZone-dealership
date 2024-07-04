@@ -1,5 +1,5 @@
 asgiref==3.7.0
-certifi==2023.7.22
+certifi==2022.6.15
 cffi==1.15.1
 charset-normalizer==2.1.0
 cloudinary==1.29.0
@@ -12,12 +12,12 @@ django-allauth==0.51.0
 django-ckeditor==6.4.2
 django-js-asset==2.0.0
 django-multiselectfield==0.1.13
-gunicorn==22.0.0
-idna==3.7
-oauthlib==3.2.2
+gunicorn==20.1.0
+idna==3.3
+oauthlib==3.2.0
 packaging==24.1
 pillow==10.4.0
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
 pycparser==2.22
 PyJWT==2.8.0
 python-decouple==3.8
@@ -28,5 +28,5 @@ six==1.16.0
 social-auth-app-django==5.4.1
 social-auth-core==4.5.4
 sqlparse==0.5.0
-urllib3==1.26.19
+urllib3==1.26.11
 whitenoise==6.7.0
