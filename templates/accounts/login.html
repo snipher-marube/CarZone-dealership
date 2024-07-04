@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {%load static %}
+{% load socialaccount %}
 {% block title %} | Login {% endblock %}
 {% block content %}
 <!--start of login banner-->
@@ -47,8 +48,8 @@
                         </div>
                         <div class="clearfix"></div>
                         <ul class="social-list">
-                            <li><a href="{% url 'social:begin' 'github' %}" class="facebook-bg"><i class="fa fa-github github-i"></i><span>Github</span></a></li>
-                            <li><a href="{% url "social:begin" "google-oauth2" %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
+                            <li><a href="{% provider_login_url 'github' %}" class="facebook-bg"><i class="fa fa-github github-i"></i><span>Github</span></a></li>
+                            <li><a href="{% provider_login_url 'google' %}" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                         </ul>
                     </form>
                     <p>Don't have an account? <a href="{% url 'register' %}" class="thembo"> Register here</a></p>

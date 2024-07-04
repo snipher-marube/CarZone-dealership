@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}| Search Result{% endblock %}
+
+{% block title %}| Search Results{% endblock %}
+
 {% block content %}
 {% load humanize %}
+
 <!-- Banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
@@ -21,14 +24,14 @@
     <div class="container">
         <div class="search-area-inner">
             <div class="search-contents">
-                <form method="GET" action="{% url 'search'%}">
+                <form method="GET" action="{% url 'search' %}">
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="model">
-                                    <option disabled="disabled" selected="selected">Select Model</option>
-                                  {% for model in model_search %}
-                                    <option value"{{model}}" >{{model}}</option>
+                                    <option disabled="disabled" {% if not model %}selected="selected"{% endif %}>Select Model</option>
+                                    {% for model_option in model_search %}
+                                        <option value="{{ model_option }}" {% if model_option == model %}selected="selected"{% endif %}>{{ model_option }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -36,9 +39,9 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="city">
-                                    <option disabled="disabled" selected="selected">Select Location</option>
-                                    {% for city in city_search %}
-                                    <option value="{{city}}">{{city}}</option>
+                                    <option disabled="disabled" {% if not city %}selected="selected"{% endif %}>Select Location</option>
+                                    {% for city_option in city_search %}
+                                        <option value="{{ city_option }}" {% if city_option == city %}selected="selected"{% endif %}>{{ city_option }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -46,9 +49,9 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="year">
-                                    <option disabled="disabled" selected="selected">Select Year</option>
-                                    {% for year in year_search %}
-                                    <option value="{{year}}">{{year}}</option>
+                                    <option disabled="disabled" {% if not year %}selected="selected"{% endif %}>Select Year</option>
+                                    {% for year_option in year_search %}
+                                        <option value="{{ year_option }}" {% if year_option == year %}selected="selected"{% endif %}>{{ year_option }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -58,9 +61,9 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <select class="selectpicker search-fields" name="body_style">
-                                    <option disabled="disabled" selected="selected">Select Type Of Car</option>
-                                    {% for body in body_search %}
-                                    <option value="{{body}}">{{body}}</option>
+                                    <option disabled="disabled" {% if not body_style %}selected="selected"{% endif %}>Select Type Of Car</option>
+                                    {% for body_option in body_search %}
+                                        <option value="{{ body_option }}" {% if body_option == body_style %}selected="selected"{% endif %}>{{ body_option }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -88,86 +91,107 @@
 </div>
 <!-- Search box 3 end -->
 
-<!-- found car(s) start -->
+<!-- Found car(s) start -->
 <div class="featured-car content-area">
     <div class="container">
         <!-- Main title -->
         <div class="main-title">
             <h1>Here's your <span>Cars</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>
+                We have the best cars for you. You can choose your dream car from here.
+            </p>
         </div>
         <div class="row">
             {% if cars %}
-            {% for car in cars %}
+                {% for car in cars %}
                     <div class="col-lg-6 col-md-6">
                         <div class="car-box-3">
                             <div class="car-thumbnail">
                                 <a href="{% url 'car_detail' car.id %}" class="car-img">
                                     <div class="tag">For Rent</div>
                                     <div class="price-box">
-                                        <span>${{car.price|intcomma}}</span>
+                                        <span>${{ car.price|intcomma }}</span>
                                     </div>
-                                    <img class="d-block w-100" src="{{car.car_photo.url}}" style="min-height:330px; max-height:330px;" alt="car">
+                                    <img class="d-block w-100" src="{{ car.car_photo.url }}" style="min-height:330px; max-height:330px;" alt="car">
                                 </a>
                                 <div class="carbox-overlap-wrapper">
                                     <div class="overlap-box">
                                         <div class="overlap-btns-area">
                                             <div class="car-magnify-gallery">
                                                 {% if car.car_photo_1 %}
-                                                <a href="{{car.car_photo_1.url}}" class="overlap-btn">
-                                                    <i class="fa fa-expand"></i>
-                                                    <img class="hidden" src="{{car.car_photo_1.url}}" style="min-height:90px; max-height:90px;">
-                                                </a>
+                                                    <a href="{{ car.car_photo_1.url }}" class="overlap-btn">
+                                                        <i class="fa fa-expand"></i>
+                                                        <img class="hidden" src="{{ car.car_photo_1.url }}" style="min-height:90px; max-height:90px;" alt="car">
+                                                    </a>
                                                 {% endif %}
                                                 {% if car.car_photo_2 %}
-                                                <a href="{{car.car_photo_2.url}}" class="hidden" >
-                                                    <img class="hidden" src="{{car.car_photo_2.url}}" style="min-height:90px; max-height:90px;">
-                                                </a>
+                                                    <a href="{{ car.car_photo_2.url }}" class="overlap-btn">
+                                                        <i class="fa fa-expand"></i>
+                                                        <img class="hidden" src="{{ car.car_photo_2.url }}" style="min-height:90px; max-height:90px;" alt="car">
+                                                    </a>
                                                 {% endif %}
-                                                {% if car.car_photo_3 %}
-                                                <a href="{{car.car_photo_3.url}}" class="hidden">
-                                                    <img class="hidden" src="{{car.car_photo_3.url}}" style="min-height:90px; max-height:90px;">
-                                                </a>
-                                                {% endif %}
-                                                {% if car.car_photo_4 %}
-                                                <a href="{{car.car_photo_4.url}}" class="hidden">
-                                                    <img class="hidden" src="{{car.car_photo_4.url}}" style="min-height:90px; max-height:90px;">
-                                                </a>
-                                                {% endif %}
-
                                             </div>
+                                            <a href="{% url 'car_detail' car.id %}" class="overlap-btn">
+                                                <i class="fa fa-link"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="detail">
                                 <h1 class="title">
-                                    <a href="{% url 'car_detail' car.id %}">{{car.car_title}}</a>
+                                    <a href="{% url 'car_detail' car.id %}">{{ car.model }}</a>
                                 </h1>
                                 <div class="location">
-                                    <a href="{% url 'car_detail' car.id %}">
-                                        <i class="flaticon-pin"></i>{{car.state}}, {{car.city}}
-                                    </a>
+                                    <a href="#"><i class="fa fa-map-marker"></i> {{ car.city }}</a>
                                 </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>{{car.fuel_type}}</li>
-                                    <li>{{car.miles|intcomma}} km</li>
-                                    <li>{{car.transmission}}</li>
-                                    <li>{{car.body_style}}</li>
-                                    <li>{{car.color}}</li>
-                                    <li>{{car.year}}</li>
+                                <ul class="features">
+                                    <li><span>{{ car.year }}</span> Year</li>
+                                    <li><span>{{ car.mileage|intcomma }}</span> km mileage</li>
+                                    <li><span>{{ car.engine_capacity }}</span> CC Engine</li>
                                 </ul>
+                                <div class="timing">
+                                    <div class="timing-inner">
+                                        <div class="timing-m">
+                                            <h2>${{ car.price|intcomma }}</h2>Per Month
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    <p>No cars were found. Please check back latter, or search for another car.</p>
-                    {% endif %}
+                {% endfor %}
+                <!-- Pagination -->
+                {% if cars.has_other_pages %}
+                    <div class="col-lg-12 col-md-12">
+                        <div class="pagination-box clearfix">
+                            <ul class="pagination">
+                                {% if cars.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ cars.previous_page_number }}">Previous</a></li>
+                                {% endif %}
+                                {% for i in cars.paginator.page_range %}
+                                    {% if cars.number == i %}
+                                        <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if cars.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ cars.next_page_number }}">Next</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="col-lg-12 col-md-12">
+                    <div class="alert alert-warning">
+                        No cars found matching the search criteria.
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
-<!--end found car(s)-->
-
-
+<!-- Found car(s) end -->
 {% endblock %}
