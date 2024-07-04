@@ -44,7 +44,7 @@ def inquiry(request):
             'New Car Inquiry',
             'You have a new car enquiry for '+car_title+'. Please login for more info.',
             'from@example.com',
-            [admin_email, config('EMAIL_HOST_USER')],
+            [admin_email, 'sniphermarube@gmail.com'],
             fail_silently=False,
         )
         contact.save()
