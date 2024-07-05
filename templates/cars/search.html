@@ -108,9 +108,9 @@
                         <div class="car-box-3">
                             <div class="car-thumbnail">
                                 <a href="{% url 'car_detail' car.id %}" class="car-img">
-                                    <div class="tag">For Rent</div>
+                                    <div class="tag"> {{car.tag}} </div>
                                     <div class="price-box">
-                                        <span>${{ car.price|intcomma }}</span>
+                                        <span>KSH {{ car.price|intcomma }}</span>
                                     </div>
                                     <img class="d-block w-100" src="{{ car.car_photo.url }}" style="min-height:330px; max-height:330px;" alt="car">
                                 </a>
@@ -147,13 +147,13 @@
                                 </div>
                                 <ul class="features">
                                     <li><span>{{ car.year }}</span> Year</li>
-                                    <li><span>{{ car.mileage|intcomma }}</span> km mileage</li>
-                                    <li><span>{{ car.engine_capacity }}</span> CC Engine</li>
+                                    <li><span>{{car.miles|intcomma}}</span> km mileage</li>
+                                    <li><span>{{ car.engine }}</span> CC Engine</li>
                                 </ul>
                                 <div class="timing">
                                     <div class="timing-inner">
                                         <div class="timing-m">
-                                            <h2>${{ car.price|intcomma }}</h2>Per Month
+                                            <h2>KSH {{ car.price|intcomma }}</h2>
                                         </div>
                                     </div>
                                 </div>

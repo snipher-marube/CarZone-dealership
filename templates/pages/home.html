@@ -126,9 +126,9 @@
                             <a href="{% url 'car_detail' car.id %}" class="car-img">
                                 <div class="tag-2">Featured</div>
                                 <div class="price-box">
-                                    <span class="del"><del>$805.00</del></span>
+                                    <span class="del"><del>KSH 805.00</del></span>
                                     <br>
-                                    <span>${{car.price|intcomma }}</span>
+                                    <span>KSH {{car.price|intcomma }}</span>
                                 </div>
                                 <img class="d-block w-100" src="{{ car.car_photo.url }}" style="min-height:262px; max-height:262px;" alt="car">
                             </a>
@@ -213,7 +213,7 @@
                 <div class="car-box">
                     <div class="car-thumbnail">
                         <a href="{% url 'car_detail' car.id %}" class="car-img">
-                            <div class="tag">For Sale</div>
+                            <div class="tag"> {{car.tag}} </div>
                         <img class="d-block w-100" src="{{car.car_photo.url}}" style="min-height:262px; max-height:262px;" alt="car">
                             <div class="facilities-list clearfix">
                                 <ul>
@@ -271,10 +271,10 @@
                     </div>
                     <div class="footer clearfix">
                         <div class="pull-left ratings days">
-                            <p class="cartype">{{car.model}}</p>
+                            <p class="cartype"> <span class="text-xs">Model:</span> {{car.model}}</p>
                         </div>
                         <div class="pull-right">
-                            <p class="price">${{car.price|intcomma}}</p>
+                            <p class="price">KSH {{car.price|intcomma}}</p>
                         </div>
                     </div>
                 </div>
@@ -368,7 +368,7 @@
                                 <img src="{% static 'img/car-14.jpg' %}" alt="best-car" class="img-fluid modalLabel-2">
                                 <div class="sobuz">
                                     <div class="price-box" style="padding-bottom: 5px;">
-                                        <span class="del-2">$1050.00</span>
+                                        <span class="del-2">KSH 1050.00</span>
                                     </div>
                                     <div class="">
                                         <a href="car-details.html" class="btn btn-md btn-round btn-theme">Convertible</a>

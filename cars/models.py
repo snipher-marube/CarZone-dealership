@@ -7,38 +7,37 @@ from multiselectfield import MultiSelectField
 
 class Car(models.Model):
     STATE_CHOICES = (
-        ('MU', 'Meru'),
-        ('MA', 'Mombasa'),
-        ('KU', 'Kisumu'),
-        ('KI', 'Kisii'),
-        ('MS', 'Machakos'),
-        ('NI', 'Nairobi'),
-        ('GA', 'Garissa'),
-        ('NA', 'Nyamira'),
-        ('KO', 'Kericho'),
-        ('EM', 'Embu'),
-        ('NV', 'Naivasha'),
-        ('NK', 'Nakuru'),
-        ('NM', 'Namanga'),
-        ('MI', 'Migori'),
-        ('KG', 'Kakamega'),
-        ('EL', 'Eldoret'),
-        ('BM', 'Bungoma'),
-        ('KL', 'Kwale'),
-        ('LM', 'Limuru'),
-        ('KR', 'Kilgoris'),
-        ('KT', 'Kitengela'),
-        ('KN', 'Karen'),
-        ('LV', 'Lavington'),
-        ('NR', 'Nyeri'),
-        ('MA', 'Mwea'),
-        ('HB', 'Homa Bay'),
-        ('OG', 'Ogembo'),
-        ('SY', 'Siaya'),
-        ('KF', 'Kilifi'),
-        ('MD', 'Malindi'),
-        ('NG', 'Namanga'),
-        ('NM', 'New Mexico'),
+        ('Meru', 'Meru'),
+        ('Mombasa', 'Mombasa'),
+        ('Kisumu', 'Kisumu'),
+        ('Kisii', 'Kisii'),
+        ('Machakos', 'Machakos'),
+        ('Nairobi', 'Nairobi'),
+        ('Garissa', 'Garissa'),
+        ('Nyamira', 'Nyamira'),
+        ('Kericho', 'Kericho'),
+        ('Embu', 'Embu'),
+        ('Naivasha', 'Naivasha'),
+        ('Nakuru', 'Nakuru'),
+        ('Namanga', 'Namanga'),
+        ('Migori', 'Migori'),
+        ('Kakamega', 'Kakamega'),
+        ('Eldoret', 'Eldoret'),
+        ('Bungoma', 'Bungoma'),
+        ('Kwale', 'Kwale'),
+        ('Limuru', 'Limuru'),
+        ('Kolgoris', 'Kilgoris'),
+        ('Kitengela', 'Kitengela'),
+        ('Karen', 'Karen'),
+        ('Lavington', 'Lavington'),
+        ('Nyeri', 'Nyeri'),
+        ('Mwea', 'Mwea'),
+        ('Homa Bay', 'Homa Bay'),
+        ('Ogembo', 'Ogembo'),
+        ('Siaya', 'Siaya'),
+        ('Kilifi', 'Kilifi'),
+        ('Malindi', 'Malindi'),
+        ('Namanga', 'Namanga'),
 
     )
 
@@ -71,24 +70,30 @@ class Car(models.Model):
     )
 
     TRANSMISSION_MODES = (
-        ('AT', 'Automatic'),
-        ('MT', 'Manual'),
-        ('AM', 'Automated Manual'),
-        ('CVT', 'Continuosly Variable'),
+        ('Automatic', 'Automatic'),
+        ('Manual', 'Manual'),
+        ('Automated Manual', 'Automated Manual'),
+        ('Continuos Variable', 'Continuosly Variable'),
     )
     CAR_CONDITION = (
-        ('u', 'Used'),
-        ('n', 'New'),
-        ('r', 'Refurbished'),
+        ('Used', 'Used'),
+        ('New', 'New'),
+        ('Refurbished', 'Refurbished'),
     )
 
+    TAGS = (
+        ('FOR RENT', 'FOR RENT'),
+        ('FOR HIRE', 'FOR HIRE'),
+        ('FOR SALE', 'FOR SALE')
+    )
+    
     car_title = models.CharField(max_length=100)
-    state = models.CharField(choices=STATE_CHOICES, max_length=2)
+    state = models.CharField(choices=STATE_CHOICES, max_length=9)
     color = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     year = models.IntegerField(('year'), choices=YEAR_CHOICE)
-    condition = models.CharField(choices=CAR_CONDITION, max_length=1)
+    condition = models.CharField(choices=CAR_CONDITION, max_length=12)
     price = models.IntegerField()
     description = RichTextUploadingField()
     car_photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
@@ -99,7 +104,7 @@ class Car(models.Model):
     features = MultiSelectField(choices=FEATURES_CHOICES, max_length=255)
     body_style = models.CharField(max_length=100)
     engine = models.CharField(max_length=100)
-    transmission = models.CharField(choices=TRANSMISSION_MODES, max_length=3)
+    transmission = models.CharField(choices=TRANSMISSION_MODES, max_length=18)
     interior = models.CharField(max_length=100)
     miles = models.IntegerField()
     doors = models.CharField(choices=DOOR_CHOICES, max_length=10)
@@ -108,6 +113,7 @@ class Car(models.Model):
     milage = models.IntegerField()
     fuel_type = models.CharField(max_length=50)
     no_of_owners = models.CharField(max_length=100)
+    tag = models.CharField(choices=TAGS, max_length=9, blank=True, null=True)
     is_featured = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=datetime.now, blank=True)
 
