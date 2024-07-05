@@ -4,10 +4,10 @@ from .base import *
 DEBUG = True
 
 # Add 'localhost' to ALLOWED_HOSTS for development
-ALLOWED_HOSTS = ['localhost', '.vercel.app']
-DOMAIN = "http://localhost:8000"
+ALLOWED_HOSTS = ['localhost', '.vercel.app', 'snipher.pythonanywhere.com']
+DOMAINS = ['localhost', 'snipher.pythonanywhere.com']
 SECURE_SSL_REDIRECT = False
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://snipher.pythonanywhere.com"]
 
 # Use SQLite for development
 DATABASES = {
@@ -23,4 +23,4 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 # Use console email backend for development
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
