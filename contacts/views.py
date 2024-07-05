@@ -42,9 +42,9 @@ def inquiry(request):
         admin_email = admin_info.email
         send_mail(
             'New Car Inquiry',
-            'You have a new car enquiry for '+car_title+'. Please login for more info.',
+            'You have a new car enquiry for ' + car_title + '. Please login for more info.',
             'from@example.com',
-            [admin_email, 'sniphermarube@gmail.com'],
+            [admin_email, config('DEFAULT_FROM_EMAIL')],
             fail_silently=False,
         )
         contact.save()
