@@ -95,6 +95,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+
 # Static and media files settings
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

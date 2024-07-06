@@ -1,31 +1,29 @@
 from .base import *
 from decouple import config
 import dj_database_url
-from urllib.parse import urlparse
 
 # Production-specific settings
 DEBUG = True
 
-# Parse the DATABASE_URL to extract components
-url = urlparse(config('DATABASE_URL'))
+
 
 # Add your production domain to ALLOWED_HOSTS
 ALLOWED_HOSTS = ['.vercel.app']
 
-# Configure your production database (using PostgreSQL directly)
+
+# Configure your production database 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': url.path[1:],
-        'USER': url.username,
-        'PASSWORD': url.password,
-        'HOST': url.hostname,
-        'PORT': url.port,
-        # Optional settings
-        'ATOMIC_REQUESTS': True,
-        'CONN_MAX_AGE': 600,  # Optional: Connection pool age limit
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USER'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('DATABASE_PORT'),
     }
 }
+
+
 
 
 
