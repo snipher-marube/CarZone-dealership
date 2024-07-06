@@ -10,11 +10,14 @@ ALLOWED_HOSTS = ['.vercel.app']
 
 # Configure your production database (example using PostgreSQL)
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('POSTGRES_URL_NON_POOLING'),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('POSTGRES_DATABASE'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': config('POSTGRES_HOST'),
+        'PORT':  5432 # default PostgreSQL port is 5432
+    }
 }
 
 # This configuration block is setting up a cache using Redis for the Django project in a production environment.
