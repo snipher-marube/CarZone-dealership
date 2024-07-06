@@ -13,7 +13,7 @@ ALLOWED_HOSTS = ['.vercel.app']
 # Configure your production database (example using PostgreSQL)
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL'),
+        default=config('POSTGRES_URL'),
         conn_max_age=600
     )
 }
