@@ -18,6 +18,9 @@ DATABASES = {
     )
 }
 
+# engine
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
+
 # Optional: Additional database settings
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
