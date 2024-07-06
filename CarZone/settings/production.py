@@ -1,24 +1,27 @@
 from .base import *
-from decouple import config, Csv
+from decouple import config
 import dj_database_url
 
 # Production-specific settings
 DEBUG = True
+
+
 
 # Add your production domain to ALLOWED_HOSTS
 ALLOWED_HOSTS = ['.vercel.app']
 
 # Configure your production database (example using PostgreSQL)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DATABASE'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT':  5432 # default PostgreSQL port is 5432
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
+
+# Optional: Additional database settings
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+
 
 # This configuration block is setting up a cache using Redis for the Django project in a production environment.
 # The cache is used to store the results of expensive database queries, API calls, or other computationally expensive operations.
