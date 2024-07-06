@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
+  - package-ecosystem: "pip" # The package ecosystem for which to update dependencies
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "weekly" # The frequency of updates
