@@ -9,8 +9,11 @@
       }
     },
     {
-      "src": "build.sh"
-      
+      "src": "build.sh" 
+    },
+    {
+      "src": "CarZone/static",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
