@@ -5,16 +5,9 @@
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "runtime": "python3.12"
+        "runtime": "python3.12",
+        "buildCommand": "pip install -r requirements.txt && python manage.py makemigrations && python manage.py migrate && python manage.py create_default_superuser && python manage.py collectstatic"
       }
-    },
-    {
-      "src": "build.sh" ,
-      "use": "@vercel/static"
-    },
-    {
-      "src": "CarZone/static",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
