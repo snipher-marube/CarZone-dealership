@@ -12,4 +12,7 @@ python3.12 manage.py migrate --noinput
 echo "collect static..."
 python3.12 manage.py collectstatic --noinput --clear
 
+echo "Creating superuser..."
+python3.12 manage.py create_default_superuser
+
 
