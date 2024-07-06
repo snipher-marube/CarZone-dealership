@@ -1,16 +1,21 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
+from django.db import connections
 
 class Command(BaseCommand):
     help = 'Create a default superuser if one does not exist'
 
     def handle(self, *args, **options):
         User = get_user_model()
-        if not User.objects.filter(username='admin').exists():
+        
+        # Debugging output to check database connection
+        self.stdout.write(self.style.SUCCESS(f'Database connection settings: {connections.databases}'))
+        
+        if not User.objects.filter(username='defaultadmin').exists():
             User.objects.create_superuser(
                 username='admin',
                 email='admin@example.com',
-                password='adminpassword'
+                password='snipher8431'
             )
             self.stdout.write(self.style.SUCCESS('Successfully created default superuser'))
         else:
