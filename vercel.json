@@ -9,7 +9,8 @@
       }
     },
     {
-      "src": "build.sh" 
+      "src": "build.sh" ,
+      "use": "@vercel/static"
     },
     {
       "src": "CarZone/static",
