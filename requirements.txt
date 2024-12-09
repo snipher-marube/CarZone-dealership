@@ -22,7 +22,7 @@ pycparser==2.22
 PyJWT==2.10.1
 python-decouple==3.8
 python3-openid==3.2.0
-redis==5.2.0
+redis==5.2.1
 requests==2.32.3
 requests-oauthlib==2.0.0
 six==1.16.0
