@@ -31,5 +31,5 @@ social-auth-core==4.8.1
 sqlparse==0.5.3
 typing_extensions==4.15.0
 urllib3==2.5.0
-whitenoise==6.9.0
+whitenoise==6.11.0
 setuptools>=45.0
